@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Skills — Can I Do That?</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body data-page="skills">
+
+  <main class="page">
+
+    <header class="site-header">
+
+      <a href="./index.html" class="brand">
+        CAN I DO THAT?
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="./index.html">Home</a>
+        <a href="./skills.html" aria-current="page">Skills</a>
+        <a href="./about.html">About</a>
+      </nav>
+
+    </header>
+
+
+    <section class="skills-page-intro">
+
+      <h1>
+        All Skills
+      </h1>
+
+      <p>
+        You’re capable of more than you know.
+      </p>
+
+    </section>
+
+
+    <section
+      class="status-summary"
+      aria-label="Your skill statuses"
+    >
+
+      <a
+        class="summary-card"
+        href="./skills.html?status=can"
+      >
+        <span
+          id="canCount"
+          class="summary-number"
+        >
+          0
+        </span>
+
+        <span class="summary-label">
+          I can do this
+        </span>
+      </a>
+
+
+      <a
+        class="summary-card"
+        href="./skills.html?status=learning"
+      >
+        <span
+          id="learningCount"
+          class="summary-number"
+        >
+          0
+        </span>
+
+        <span class="summary-label">
+          Learning
+        </span>
+      </a>
+
+
+      <a
+        class="summary-card"
+        href="./skills.html?status=want"
+      >
+        <span
+          id="wantCount"
+          class="summary-number"
+        >
+          0
+        </span>
+
+        <span class="summary-label">
+          Want to try
+        </span>
+      </a>
+
+    </section>
+
+
+    <section class="skills-section all-skills-section">
+
+      <div class="skills-page-actions">
+
+        <button
+          class="primary-button"
+          type="button"
+          data-open-try
+        >
+          What should I try?
+        </button>
+
+        <button
+          id="openAddSkillButton"
+          class="secondary-button"
+          type="button"
+        >
+          + Add your own skill
+        </button>
+
+      </div>
+
+
+      <div class="skills-tools">
+
+        <div class="search-wrap">
+
+          <span
+            class="search-icon"
+            aria-hidden="true"
+          >
+            ⌕
+          </span>
+
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search skills..."
+            autocomplete="off"
+          >
+
+          <button
+            id="clearSearchButton"
+            class="clear-search-button hidden"
+            type="button"
+          >
+            Clear
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="filter-block">
+
+        <p class="filter-label">
+          Human Capabilities
+        </p>
+
+        <div
+          id="capabilityFilters"
+          class="capability-filters"
+        ></div>
+
+      </div>
+
+
+      <div class="results-line">
+
+        <p id="resultsCount">
+          0 skills
+        </p>
+
+        <button
+          id="restoreHiddenButton"
+          class="text-button hidden"
+          type="button"
+        >
+          Hidden skills
+        </button>
+
+      </div>
+
+
+      <div
+        id="activePersonalView"
+        class="personal-view hidden"
+      ></div>
+
+
+      <div
+        id="skillsContainer"
+        class="skills-container"
+      ></div>
+
+
+      <button
+        id="showMoreButton"
+        class="show-more-button hidden"
+        type="button"
+      >
+        Show more
+      </button>
+
+    </section>
+
+
+    <footer class="site-footer">
+
+      <a href="./index.html" class="footer-brand">
+        CAN I DO THAT?
+      </a>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="./index.html">Home</a>
+        <a href="./skills.html">Skills</a>
+        <a href="./about.html">About</a>
+      </nav>
+
+      <div class="data-note">
+
+        <p>
+          Your skills and stories are stored on this device.
+        </p>
+
+        <div class="data-actions">
+
+          <button type="button" data-backup>
+            Back up
+          </button>
+
+          <button type="button" data-restore>
+            Restore
+          </button>
+
+          <input
+            class="restore-input"
+            data-restore-input
+            type="file"
+            accept=".json,application/json"
+          >
+
+        </div>
+
+      </div>
+
+    </footer>
+
+  </main>
+
+
+  <!-- WHAT SHOULD I TRY? -->
+
+  <dialog id="tryDialog" class="site-dialog">
+
+    <div class="dialog-heading">
+
+      <div>
+
+        <p class="section-label">
+          NOT SURE WHAT'S NEXT?
+        </p>
+
+        <h2>
+          What should I try?
+        </h2>
+
+      </div>
+
+      <button
+        class="dialog-close"
+        type="button"
+        data-close-dialog="tryDialog"
+      >
+        Close
+      </button>
+
+    </div>
+
+    <p class="dialog-intro">
+      Pick something from the things you haven't started yet.
+    </p>
+
+    <button
+      id="randomPickButton"
+      class="primary-button"
+      type="button"
+    >
+      What should I try?
+    </button>
+
+    <div
+      id="suggestionResult"
+      class="suggestion-result hidden"
+    >
+
+      <p class="section-label">
+        HOW ABOUT...
+      </p>
+
+      <h3 id="suggestionName"></h3>
+
+      <p
+        id="suggestionCapabilities"
+        class="suggestion-capabilities"
+      ></p>
+
+      <div class="suggestion-buttons">
+
+        <button
+          id="suggestionWantButton"
+          class="primary-button"
+          type="button"
+        >
+          Want to try
+        </button>
+
+        <button
+          id="anotherSuggestionButton"
+          type="button"
+        >
+          Another one
+        </button>
+
+      </div>
+
+    </div>
+
+    <p
+      id="noSuggestionMessage"
+      class="hidden"
+    >
+      Nothing to suggest right now.
+    </p>
+
+  </dialog>
+
+
+  <!-- STORY -->
+
+  <dialog
+    id="storyDialog"
+    class="site-dialog story-dialog"
+  >
+
+    <div class="dialog-heading">
+
+      <div>
+
+        <p class="section-label">
+          YOUR STORY
+        </p>
+
+        <h2 id="storyDialogTitle">
+          Your story
+        </h2>
+
+      </div>
+
+      <button
+        class="dialog-close"
+        type="button"
+        data-close-dialog="storyDialog"
+      >
+        Close
+      </button>
+
+    </div>
+
+    <form id="storyForm">
+
+      <label>
+        When did you learn it?
+
+        <input
+          id="storyWhen"
+          type="text"
+          placeholder="Around 2007"
+        >
+      </label>
+
+      <label>
+        Who taught you?
+
+        <input
+          id="storyWho"
+          type="text"
+          placeholder="My grandad"
+        >
+      </label>
+
+      <label>
+        Where?
+
+        <input
+          id="storyWhere"
+          type="text"
+          placeholder="At home"
+        >
+      </label>
+
+      <label>
+        What do you remember?
+
+        <textarea
+          id="storyMemory"
+          placeholder="The bit you want to remember..."
+        ></textarea>
+      </label>
+
+      <div class="story-form-actions">
+
+        <button
+          class="primary-button"
+          type="submit"
+        >
+          Save story
+        </button>
+
+        <button
+          id="deleteStoryButton"
+          class="text-button danger hidden"
+          type="button"
+        >
+          Delete story
+        </button>
+
+      </div>
+
+    </form>
+
+  </dialog>
+
+
+  <!-- ADD YOUR OWN SKILL -->
+
+  <dialog id="addSkillDialog" class="site-dialog">
+
+    <div class="dialog-heading">
+
+      <div>
+
+        <p class="section-label">
+          YOUR COLLECTION
+        </p>
+
+        <h2 id="customSkillDialogTitle">
+          Add your own skill
+        </h2>
+
+      </div>
+
+      <button
+        class="dialog-close"
+        type="button"
+        data-close-dialog="addSkillDialog"
+      >
+        Close
+      </button>
+
+    </div>
+
+    <label>
+      Skill name
+
+      <input
+        id="newSkillName"
+        type="text"
+        placeholder="Make Grandma's bread"
+      >
+    </label>
+
+    <label>
+      Human capability
+      <span class="optional">(optional)</span>
+
+      <select id="newSkillCapability">
+        <option value="">
+          No capability
+        </option>
+      </select>
+    </label>
+
+    <p
+      id="addSkillMessage"
+      class="form-message"
+    ></p>
+
+    <button
+      id="saveNewSkillButton"
+      class="primary-button"
+      type="button"
+    >
+      Add skill
+    </button>
+
+  </dialog>
+
+
+  <!-- HIDDEN SKILLS -->
+
+  <dialog id="hiddenSkillsDialog" class="site-dialog">
+
+    <div class="dialog-heading">
+
+      <div>
+
+        <p class="section-label">
+          HIDDEN
+        </p>
+
+        <h2>
+          Hidden skills
+        </h2>
+
+      </div>
+
+      <button
+        class="dialog-close"
+        type="button"
+        data-close-dialog="hiddenSkillsDialog"
+      >
+        Close
+      </button>
+
+    </div>
+
+    <p class="form-help">
+      Bring back only the ones you want.
+    </p>
+
+    <div id="hiddenSkillsContainer"></div>
+
+  </dialog>
+
+
+  <script src="./script.js"></script>
+
+</body>
+</html>
