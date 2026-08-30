@@ -356,9 +356,16 @@ button {
 
 .skills-page-actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
   margin-bottom: 16px;
+}
+
+body[data-page="skills"] .skills-page-actions .primary-button,
+body[data-page="skills"] .skills-page-actions .secondary-button {
+  min-height: 38px;
+  padding: 0 14px;
+  font-size: 14px;
 }
 
 
@@ -422,7 +429,7 @@ select:focus {
 }
 
 .filter-label {
-  margin: 0 0 9px;
+  margin: 0 0 8px;
   font-size: 13px;
   font-weight: 700;
 }
@@ -430,16 +437,17 @@ select:focus {
 .capability-filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 6px;
 }
 
 .filter-button {
-  min-height: 36px;
-  padding: 6px 12px;
+  min-height: 32px;
+  padding: 4px 10px;
   border: 1px solid #c4c3be;
   border-radius: 999px;
   background: transparent;
   color: #171717;
+  font-size: 14px;
 }
 
 .filter-button:hover {
