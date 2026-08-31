@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>About — Can I Do That?</title>
+
+  <link
+    rel="stylesheet"
+    href="./style.css"
+  >
+</head>
+
+
+<body data-page="about">
+
+  <main class="page">
+
+
+    <!-- HEADER -->
+
+    <header class="site-header">
+
+      <a
+        href="./index.html"
+        class="brand"
+      >
+        CAN I DO THAT?
+      </a>
+
+
+      <nav
+        class="desktop-nav"
+        aria-label="Main navigation"
+      >
+
+        <a href="./index.html">
+          Home
+        </a>
+
+        <a href="./skills.html">
+          Skills
+        </a>
+
+        <a
+          href="./about.html"
+          aria-current="page"
+        >
+          About
+        </a>
+
+      </nav>
+
+    </header>
+
+
+
+    <!-- ABOUT -->
+
+    <article class="about-page">
+
+
+      <!-- INTRO -->
+
+      <section class="about-page-intro">
+
+        <div class="about-page-intro-inner">
+
+          <h1>
+            Why this exists
+          </h1>
+
+          <p class="about-lead">
+            Life is something to take part in.
+          </p>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- OPENING -->
+
+      <section class="about-copy about-copy-opening">
+
+        <p>
+          But it’s becoming easier to spend more and more time behind a screen — watching other people make things, learn things, explore, create and live.
+        </p>
+
+        <p>
+          Can I Do That? is a small push in the other direction.
+        </p>
+
+        <p>
+          A place to find things to try, things to learn and things you might never have thought of doing.
+        </p>
+
+        <p>
+          Useful things. Useless things. Everyday things. Strange things.
+        </p>
+
+      </section>
+
+
+
+      <!-- ACTION WORDS -->
+
+      <section
+        class="about-action-strip"
+        aria-label="Ways to take part"
+      >
+
+        <span>MAKE</span>
+
+        <span>LEARN</span>
+
+        <span>MOVE</span>
+
+        <span>EXPLORE</span>
+
+        <span>CONNECT</span>
+
+      </section>
+
+
+
+      <!-- MIDDLE -->
+
+      <section class="about-copy about-copy-middle">
+
+        <p>
+          Use your hands. Move your body. Make something. Learn something. Talk to someone. Go outside. Try something you might be terrible at.
+        </p>
+
+        <p>
+          You don’t need to master everything.
+        </p>
+
+        <p>
+          You don’t need to turn it into a career, a side hustle or something productive.
+        </p>
+
+        <p>
+          Sometimes doing something just because you’re curious is enough.
+        </p>
+
+      </section>
+
+
+
+      <!-- CLOSING -->
+
+      <section class="about-closing">
+
+        <div class="about-closing-inner">
+
+          <p class="about-closing-main">
+            Being human isn’t something you watch.
+          </p>
+
+          <p class="about-closing-main about-closing-blue">
+            It’s something you experience.
+          </p>
+
+          <p class="about-closing-support">
+            And there’s probably far more you’re capable of than you know.
+          </p>
+
+          <p class="about-closing-question">
+
+            So, can you do that?
+
+            <button
+              id="aboutChallengeButton"
+              class="about-challenge-arrow"
+              type="button"
+              aria-label="Give me something to try"
+            >
+              →
+            </button>
+
+          </p>
+
+        </div>
+
+      </section>
+
+
+    </article>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+
+      <nav
+        class="footer-nav"
+        aria-label="Footer navigation"
+      >
+
+        <a href="./index.html">
+          Home
+        </a>
+
+        <a href="./skills.html">
+          Skills
+        </a>
+
+        <a href="./about.html">
+          About
+        </a>
+
+      </nav>
+
+
+      <div class="data-note">
+
+        <p>
+          Your skills and stories are stored on this device.
+        </p>
+
+
+        <div class="data-actions">
+
+          <button
+            type="button"
+            data-backup
+          >
+            Back up
+          </button>
+
+          <button
+            type="button"
+            data-restore
+          >
+            Restore
+          </button>
+
+          <input
+            class="restore-input"
+            data-restore-input
+            type="file"
+            accept=".json,application/json"
+          >
+
+        </div>
+
+      </div>
+
+    </footer>
+
+
+  </main>
+
+
+
+  <!-- RANDOM ABOUT CHALLENGE -->
+
+  <dialog
+    id="aboutChallengeDialog"
+    class="site-dialog about-challenge-dialog"
+  >
+
+    <div class="about-challenge-close-row">
+
+      <button
+        class="dialog-close"
+        type="button"
+        data-close-dialog="aboutChallengeDialog"
+      >
+        Close
+      </button>
+
+    </div>
+
+
+    <div
+      id="aboutChallengeResult"
+      class="about-challenge-result"
+    >
+
+      <p
+        id="aboutChallengeCapabilities"
+        class="about-challenge-capabilities"
+      ></p>
+
+
+      <h3 id="aboutChallengeName"></h3>
+
+
+      <div class="about-challenge-actions">
+
+        <button
+          id="aboutChallengeWantButton"
+          class="primary-button"
+          type="button"
+        >
+          Want to try
+        </button>
+
+
+        <button
+          id="aboutChallengeAnotherButton"
+          class="about-challenge-secondary"
+          type="button"
+        >
+          Another one
+        </button>
+
+      </div>
+
+
+      <a
+        class="about-challenge-all"
+        href="./skills.html"
+      >
+        See all skills →
+      </a>
+
+    </div>
+
+
+    <p
+      id="aboutChallengeEmpty"
+      class="about-challenge-empty hidden"
+    >
+      You've already started everything here.
+    </p>
+
+  </dialog>
+
+
+
+  <!-- JAVASCRIPT -->
+
+  <script src="./skills-data.js"></script>
+  <script src="./storage.js"></script>
+  <script src="./skill-cards.js"></script>
+  <script src="./skills-page.js"></script>
+  <script src="./suggestions.js"></script>
+  <script src="./script.js"></script>
+
+
+</body>
+
+</html>
