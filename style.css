@@ -1209,18 +1209,49 @@ body[data-page="about"] .site-footer {
     align-items: flex-start;
   }
 
+
+  /* MOBILE SKILL CARDS */
+
   .skill-card {
-    padding-right: 58px;
+    padding: 16px 48px 16px 16px;
   }
 
   .skill-toggle {
-    right: 7px;
+    right: 4px;
+    top: 42px;
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+  }
+
+  .skill-card h3 {
+    font-size: 21px;
+    line-height: 1.15;
+  }
+
+  .capabilities {
+    font-size: 11px;
+    line-height: 1.45;
+    letter-spacing: .6px;
+  }
+
+  .status-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 12px;
   }
 
   .status-buttons button {
-    min-height: 44px;
-    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 42px;
+    padding: 6px 5px;
+    font-size: 12px;
+    line-height: 1.15;
   }
+
+
+  /* FOOTER */
 
   .site-footer {
     grid-template-columns: 1fr;
@@ -1236,6 +1267,9 @@ body[data-page="about"] .site-footer {
     justify-content: flex-start;
   }
 
+
+  /* DIALOGS */
+
   .site-dialog {
     width: calc(100% - 24px);
     padding: 20px;
@@ -1248,6 +1282,9 @@ body[data-page="about"] .site-footer {
   .custom-status-button {
     flex: 1 1 auto;
   }
+
+
+  /* ABOUT */
 
   .about-action-strip {
     flex-wrap: wrap;
@@ -1298,5 +1335,4 @@ body[data-page="about"] .site-footer {
   .about-action-strip span {
     font-size: 20px;
   }
-
 }
