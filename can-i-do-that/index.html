@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Can I Do That?</title>
+
+  <link
+    rel="stylesheet"
+    href="./style.css"
+  >
+</head>
+
+
+<body data-page="home">
+
+  <main class="page">
+
+
+    <!-- HEADER -->
+
+    <header class="site-header">
+
+      <a
+        href="./index.html"
+        class="brand"
+        aria-current="page"
+      >
+        CAN I DO THAT?
+      </a>
+
+
+      <nav
+        class="desktop-nav"
+        aria-label="Main navigation"
+      >
+
+        <a
+          href="./index.html"
+          aria-current="page"
+        >
+          Home
+        </a>
+
+        <a href="./skills.html">
+          Skills
+        </a>
+
+        <a href="./about.html">
+          About
+        </a>
+
+      </nav>
+
+    </header>
+
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div class="hero-copy">
+
+        <h1>
+          <span>Find out what</span>
+          <span>you can do.</span>
+        </h1>
+
+
+        <p class="hero-intro">
+          Explore things to learn, make, do and experience — and find what you want to try next.
+        </p>
+
+
+        <button
+          class="primary-button home-try-button"
+          type="button"
+          data-open-try
+        >
+          What should I try?
+
+          <span aria-hidden="true">
+            →
+          </span>
+        </button>
+
+      </div>
+
+
+      <div class="hero-art">
+
+        <img
+          src="./images/hero.png"
+          alt=""
+          class="hero-image"
+        >
+
+      </div>
+
+    </section>
+
+
+
+    <!-- STATUS SUMMARY -->
+
+    <section
+      class="status-summary"
+      aria-label="Your skill progress"
+    >
+
+      <a
+        class="summary-card"
+        href="./skills.html?status=can"
+      >
+
+        <span
+          id="canCount"
+          class="summary-number"
+        >
+          0
+        </span>
+
+        <span class="summary-label">
+          I can do this
+        </span>
+
+      </a>
+
+
+      <a
+        class="summary-card"
+        href="./skills.html?status=learning"
+      >
+
+        <span
+          id="learningCount"
+          class="summary-number"
+        >
+          0
+        </span>
+
+        <span class="summary-label">
+          Learning
+        </span>
+
+      </a>
+
+
+      <a
+        class="summary-card"
+        href="./skills.html?status=want"
+      >
+
+        <span
+          id="wantCount"
+          class="summary-number"
+        >
+          0
+        </span>
+
+        <span class="summary-label">
+          Want to try
+        </span>
+
+      </a>
+
+    </section>
+
+
+
+    <!-- THINGS TO TRY -->
+
+    <section class="skills-section home-skills">
+
+      <div class="skills-heading">
+
+        <h2>
+          Things to try
+        </h2>
+
+      </div>
+
+
+      <div
+        id="homeSkillsContainer"
+        class="skills-container"
+      ></div>
+
+
+      <a
+        id="exploreAllSkills"
+        class="explore-all-link"
+        href="./skills.html"
+      >
+        Explore all 50 skills →
+      </a>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+
+      <nav
+        class="footer-nav"
+        aria-label="Footer navigation"
+      >
+
+        <a href="./index.html">
+          Home
+        </a>
+
+        <a href="./skills.html">
+          Skills
+        </a>
+
+        <a href="./about.html">
+          About
+        </a>
+
+      </nav>
+
+
+      <div class="data-note">
+
+        <p>
+          Your skills and stories are stored on this device.
+        </p>
+
+
+        <div class="data-actions">
+
+          <button
+            type="button"
+            data-backup
+          >
+            Back up
+          </button>
+
+          <button
+            type="button"
+            data-restore
+          >
+            Restore
+          </button>
+
+          <input
+            class="restore-input"
+            data-restore-input
+            type="file"
+            accept=".json,application/json"
+          >
+
+        </div>
+
+      </div>
+
+    </footer>
+
+
+  </main>
+
+
+
+  <!-- WHAT SHOULD I TRY -->
+
+  <dialog
+    id="tryDialog"
+    class="site-dialog"
+  >
+
+    <div class="dialog-heading">
+
+      <div>
+
+        <h2>
+          Something to try
+        </h2>
+
+      </div>
+
+
+      <button
+        class="dialog-close"
+        type="button"
+        data-close-dialog="tryDialog"
+      >
+        Close
+      </button>
+
+    </div>
+
+
+    <div
+      id="suggestionResult"
+      class="suggestion-result hidden"
+    >
+
+      <p
+        id="suggestionCapabilities"
+        class="suggestion-capabilities"
+      ></p>
+
+
+      <h3 id="suggestionName"></h3>
+
+
+      <div class="suggestion-buttons">
+
+        <button
+          id="suggestionWantButton"
+          class="primary-button"
+          type="button"
+        >
+          Want to try
+        </button>
+
+
+        <button
+          id="anotherSuggestionButton"
+          type="button"
+        >
+          Another one
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <p
+      id="noSuggestionMessage"
+      class="hidden"
+    >
+      You've already started everything here.
+    </p>
+
+  </dialog>
+
+
+
+  <!-- STORY DIALOG -->
+
+  <dialog
+    id="storyDialog"
+    class="site-dialog"
+  >
+
+    <div class="dialog-heading">
+
+      <div>
+
+        <p class="section-label">
+          YOUR STORY
+        </p>
+
+        <h2 id="storyDialogTitle">
+          Your story
+        </h2>
+
+      </div>
+
+
+      <button
+        class="dialog-close"
+        type="button"
+        data-close-dialog="storyDialog"
+      >
+        Close
+      </button>
+
+    </div>
+
+
+    <form id="storyForm">
+
+      <label for="storyWhen">
+
+        When
+
+        <span class="optional">
+          (optional)
+        </span>
+
+      </label>
+
+      <input
+        id="storyWhen"
+        type="text"
+      >
+
+
+      <label for="storyWho">
+
+        Who were you with?
+
+        <span class="optional">
+          (optional)
+        </span>
+
+      </label>
+
+      <input
+        id="storyWho"
+        type="text"
+      >
+
+
+      <label for="storyWhere">
+
+        Where?
+
+        <span class="optional">
+          (optional)
+        </span>
+
+      </label>
+
+      <input
+        id="storyWhere"
+        type="text"
+      >
+
+
+      <label for="storyMemory">
+
+        What do you remember?
+
+        <span class="optional">
+          (optional)
+        </span>
+
+      </label>
+
+      <textarea
+        id="storyMemory"
+      ></textarea>
+
+
+      <div class="story-form-actions">
+
+        <button
+          class="primary-button"
+          type="submit"
+        >
+          Save story
+        </button>
+
+
+        <button
+          id="deleteStoryButton"
+          class="skill-action danger hidden"
+          type="button"
+        >
+          Delete story
+        </button>
+
+      </div>
+
+    </form>
+
+  </dialog>
+
+
+
+  <!-- JAVASCRIPT -->
+
+  <script src="./skills-data.js"></script>
+  <script src="./storage.js"></script>
+  <script src="./skill-cards.js"></script>
+  <script src="./skills-page.js"></script>
+  <script src="./suggestions.js"></script>
+  <script src="./script.js"></script>
+
+
+</body>
+
+</html>
