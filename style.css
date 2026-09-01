@@ -349,8 +349,13 @@ button {
   margin-bottom: 16px;
 }
 
-body[data-page="skills"] .skills-page-actions .primary-button,
-body[data-page="skills"] .skills-page-actions .secondary-button {
+body[data-page="skills"]
+.skills-page-actions
+.primary-button,
+
+body[data-page="skills"]
+.skills-page-actions
+.secondary-button {
   min-height: 38px;
   padding: 0 14px;
   font-size: 14px;
@@ -593,7 +598,8 @@ select:focus {
   border-top: 0;
 }
 
-.skill-details.compact-details .skill-secondary-actions {
+.skill-details.compact-details
+.skill-secondary-actions {
   padding-top: 0;
   border-top: 0;
 }
@@ -720,7 +726,7 @@ select:focus {
 }
 
 .site-dialog::backdrop {
-  background: rgba(0,0,0,.35);
+  background: rgba(0, 0, 0, .35);
 }
 
 .dialog-heading {
@@ -1156,9 +1162,6 @@ body[data-page="about"] .site-footer {
     font-size: 14px;
   }
 
-
-  /* MOBILE HERO */
-
   .hero {
     min-height: 0;
     grid-template-columns: 1fr;
@@ -1183,48 +1186,14 @@ body[data-page="about"] .site-footer {
     transform: none;
   }
 
-
-  /* MOBILE PAGE INTRO SPACING */
-
-  .skills-page-intro,
-  .about-page-intro {
-    padding-top: 30px;
-    padding-bottom: 22px;
-  }
-
-
-  /* MOBILE STATUS SUMMARY */
-
   .status-summary {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .summary-card {
-    min-height: 78px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    padding: 10px 5px;
-    text-align: center;
+    grid-template-columns: 1fr;
   }
 
   .summary-card + .summary-card {
-    border-top: 0;
-    border-left: 1px solid #d6d4ce;
+    border-left: 0;
+    border-top: 1px solid #d6d4ce;
   }
-
-  .summary-number {
-    font-size: 25px;
-  }
-
-  .summary-label {
-    font-size: 11px;
-    line-height: 1.15;
-  }
-
-
-  /* MOBILE PAGE PADDING */
 
   .skills-section,
   .skills-page-intro,
@@ -1295,65 +1264,26 @@ body[data-page="about"] .site-footer {
     letter-spacing: .6px;
   }
 
-
-  /* MOBILE STATUS BUTTONS */
-
   .status-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 13px;
+    gap: 6px;
+    margin-top: 14px;
   }
 
   .status-buttons button {
     flex: 0 0 auto;
     width: auto;
     min-width: 0;
-    min-height: 34px;
-    padding: 5px 7px;
-    font-size: 10.5px;
-    line-height: 1.1;
+    min-height: 36px;
+    padding: 6px 9px;
+    font-size: 11px;
+    line-height: 1.15;
     white-space: nowrap;
   }
 
 
-  /* MOBILE ABOUT ACTION WORDS */
-
-  .about-action-strip {
-    display: grid;
-    grid-template-columns: max-content max-content;
-    justify-content: start;
-    align-items: start;
-    column-gap: 34px;
-    row-gap: 10px;
-    min-height: 0;
-    padding-top: 24px;
-    padding-bottom: 24px;
-    overflow: visible;
-  }
-
-  .about-action-strip span {
-    font-size: 28px;
-    line-height: 1;
-    font-weight: 800;
-    letter-spacing: -.8px;
-  }
-
-  .about-action-strip span:nth-child(3) {
-    grid-column: 1 / -1;
-    margin-left: 34px;
-  }
-
-  .about-action-strip span:nth-child(4) {
-    grid-column: 1;
-  }
-
-  .about-action-strip span:nth-child(5) {
-    grid-column: 2;
-  }
-
-
-  /* FOOTER */
+  /* MOBILE FOOTER */
 
   .site-footer {
     grid-template-columns: 1fr;
@@ -1370,23 +1300,235 @@ body[data-page="about"] .site-footer {
   }
 
 
-  /* DIALOGS */
+  /* MOBILE DIALOG BASE */
 
   .site-dialog {
-    width: calc(100% - 24px);
+    width: calc(100% - 28px);
+    max-width: 560px;
+    max-height: calc(100dvh - 28px);
+    overflow-y: auto;
     padding: 20px;
+    border-radius: 12px;
+  }
+
+  .dialog-heading {
+    gap: 14px;
+    margin-bottom: 16px;
   }
 
   .dialog-heading h2 {
+    margin-top: 2px;
+    font-size: 27px;
+    line-height: 1.08;
+    letter-spacing: -.5px;
+  }
+
+  .dialog-close {
+    flex: 0 0 auto;
+    padding: 2px;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+
+  /* MOBILE RANDOM SUGGESTION */
+
+  #tryDialog {
+    padding: 20px;
+  }
+
+  #tryDialog .dialog-heading {
+    margin-bottom: 18px;
+  }
+
+  #tryDialog .dialog-heading h2 {
     font-size: 27px;
   }
 
-  .custom-status-button {
-    flex: 1 1 auto;
+  .suggestion-capabilities {
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: .55px;
+  }
+
+  .suggestion-result h3 {
+    margin-top: 8px;
+    font-size: 27px;
+    line-height: 1.08;
+    letter-spacing: -.45px;
+  }
+
+  .suggestion-buttons {
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    margin-top: 18px;
+  }
+
+  .suggestion-buttons .primary-button {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .suggestion-buttons > button:last-child {
+    padding: 6px 0;
+    font-size: 14px;
   }
 
 
-  /* ABOUT */
+  /* MOBILE ADD / EDIT SKILL DIALOG */
+
+  #addSkillDialog .dialog-heading {
+    margin-bottom: 14px;
+  }
+
+  #addSkillDialog .dialog-heading h2 {
+    font-size: 27px;
+  }
+
+  #addSkillDialog label {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+
+  #addSkillDialog input {
+    height: 44px;
+    margin-top: 6px;
+    padding: 8px 10px;
+  }
+
+  .custom-status-block,
+  .custom-capability-block {
+    margin-top: 16px;
+  }
+
+  .custom-field-label {
+    font-size: 14px;
+  }
+
+  .custom-field-help {
+    margin: 4px 0 8px;
+    font-size: 12px;
+  }
+
+  .custom-status-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .custom-status-button {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 0;
+    min-height: 36px;
+    padding: 6px 9px;
+    font-size: 12px;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  .custom-capability-picker {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .custom-capability-picker::-webkit-scrollbar {
+    display: none;
+  }
+
+  .custom-capability-button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    min-height: 34px;
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  #saveNewSkillButton {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+
+  /* MOBILE STORY DIALOG */
+
+  #storyDialog .dialog-heading {
+    margin-bottom: 10px;
+  }
+
+  #storyDialog .section-label {
+    font-size: 10px;
+  }
+
+  #storyDialogTitle {
+    max-width: 360px;
+    font-size: 27px;
+    line-height: 1.08;
+    letter-spacing: -.5px;
+  }
+
+  #storyDialog label {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+
+  #storyDialog input {
+    height: 42px;
+    margin-top: 5px;
+    padding: 8px 10px;
+  }
+
+  #storyDialog textarea {
+    min-height: 110px;
+    margin-top: 5px;
+    padding: 9px 10px;
+  }
+
+  #storyDialog .optional {
+    font-size: 13px;
+  }
+
+  .story-form-actions {
+    margin-top: 16px;
+  }
+
+  .story-form-actions .primary-button {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+
+  /* MOBILE HIDDEN SKILLS DIALOG */
+
+  #hiddenSkillsDialog .dialog-heading h2 {
+    font-size: 27px;
+  }
+
+  #hiddenSkillsDialog .dialog-intro {
+    margin-top: 0;
+    font-size: 14px;
+  }
+
+
+  /* MOBILE ABOUT CHALLENGE */
+
+  .about-action-strip {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 14px 22px;
+  }
 
   .about-closing-main {
     font-size: clamp(34px, 10vw, 49px);
@@ -1397,15 +1539,49 @@ body[data-page="about"] .site-footer {
   }
 
   .about-challenge-dialog {
-    padding: 22px 20px 24px;
+    width: calc(100% - 28px);
+    max-width: 560px;
+    max-height: calc(100dvh - 28px);
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  .about-challenge-close-row {
+    margin-bottom: 16px;
+  }
+
+  .about-challenge-capabilities {
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: .55px;
   }
 
   .about-challenge-result h3 {
-    font-size: 26px;
+    max-width: none;
+    margin-top: 8px;
+    font-size: 27px;
+    line-height: 1.08;
+    letter-spacing: -.45px;
   }
 
   .about-challenge-actions {
-    gap: 15px;
+    gap: 10px 16px;
+    margin-top: 18px;
+  }
+
+  .about-challenge-actions .primary-button {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .about-challenge-secondary {
+    font-size: 14px;
+  }
+
+  .about-challenge-all {
+    margin-top: 18px;
+    font-size: 14px;
   }
 
   .about-challenge-arrow:hover {
@@ -1428,15 +1604,35 @@ body[data-page="about"] .site-footer {
     align-items: flex-start;
   }
 
-  .about-action-strip {
-    column-gap: 28px;
-  }
-
   .about-action-strip span {
-    font-size: 27px;
+    font-size: 20px;
   }
 
-  .about-action-strip span:nth-child(3) {
-    margin-left: 28px;
+
+  /* EXTRA SMALL PHONE DIALOG TUNING */
+
+  .site-dialog,
+  .about-challenge-dialog {
+    width: calc(100% - 20px);
+    padding: 18px;
+  }
+
+  .dialog-heading h2,
+  #tryDialog .dialog-heading h2,
+  #addSkillDialog .dialog-heading h2,
+  #hiddenSkillsDialog .dialog-heading h2 {
+    font-size: 25px;
+  }
+
+  .suggestion-result h3,
+  #storyDialogTitle,
+  .about-challenge-result h3 {
+    font-size: 25px;
+  }
+
+  .custom-status-button {
+    font-size: 11px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
