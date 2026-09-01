@@ -1210,6 +1210,30 @@ body[data-page="about"] .site-footer {
   }
 
 
+  /* MOBILE HUMAN CAPABILITY FILTERS */
+
+  .capability-filters {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .capability-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+
   /* MOBILE SKILL CARDS */
 
   .skill-card {
