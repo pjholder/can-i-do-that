@@ -1162,6 +1162,9 @@ body[data-page="about"] .site-footer {
     font-size: 14px;
   }
 
+
+  /* MOBILE HERO */
+
   .hero {
     min-height: 0;
     grid-template-columns: 1fr;
@@ -1186,14 +1189,48 @@ body[data-page="about"] .site-footer {
     transform: none;
   }
 
+
+  /* MOBILE PAGE INTRO SPACING */
+
+  .skills-page-intro,
+  .about-page-intro {
+    padding-top: 30px;
+    padding-bottom: 22px;
+  }
+
+
+  /* MOBILE STATUS SUMMARY */
+
   .status-summary {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .summary-card {
+    min-height: 78px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 5px;
+    text-align: center;
   }
 
   .summary-card + .summary-card {
-    border-left: 0;
-    border-top: 1px solid #d6d4ce;
+    border-top: 0;
+    border-left: 1px solid #d6d4ce;
   }
+
+  .summary-number {
+    font-size: 25px;
+  }
+
+  .summary-label {
+    font-size: 11px;
+    line-height: 1.15;
+  }
+
+
+  /* MOBILE PAGE PADDING */
 
   .skills-section,
   .skills-page-intro,
@@ -1264,21 +1301,24 @@ body[data-page="about"] .site-footer {
     letter-spacing: .6px;
   }
 
+
+  /* MOBILE STATUS BUTTONS */
+
   .status-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 14px;
+    gap: 5px;
+    margin-top: 13px;
   }
 
   .status-buttons button {
     flex: 0 0 auto;
     width: auto;
     min-width: 0;
-    min-height: 36px;
-    padding: 6px 9px;
-    font-size: 11px;
-    line-height: 1.15;
+    min-height: 34px;
+    padding: 5px 7px;
+    font-size: 10.5px;
+    line-height: 1.1;
     white-space: nowrap;
   }
 
