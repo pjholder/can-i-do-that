@@ -349,13 +349,8 @@ button {
   margin-bottom: 16px;
 }
 
-body[data-page="skills"]
-.skills-page-actions
-.primary-button,
-
-body[data-page="skills"]
-.skills-page-actions
-.secondary-button {
+body[data-page="skills"] .skills-page-actions .primary-button,
+body[data-page="skills"] .skills-page-actions .secondary-button {
   min-height: 38px;
   padding: 0 14px;
   font-size: 14px;
@@ -598,8 +593,7 @@ select:focus {
   border-top: 0;
 }
 
-.skill-details.compact-details
-.skill-secondary-actions {
+.skill-details.compact-details .skill-secondary-actions {
   padding-top: 0;
   border-top: 0;
 }
@@ -726,7 +720,7 @@ select:focus {
 }
 
 .site-dialog::backdrop {
-  background: rgba(0, 0, 0, .35);
+  background: rgba(0,0,0,.35);
 }
 
 .dialog-heading {
@@ -1323,6 +1317,42 @@ body[data-page="about"] .site-footer {
   }
 
 
+  /* MOBILE ABOUT ACTION WORDS */
+
+  .about-action-strip {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: start;
+    align-items: start;
+    column-gap: 34px;
+    row-gap: 10px;
+    min-height: 0;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    overflow: visible;
+  }
+
+  .about-action-strip span {
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -.8px;
+  }
+
+  .about-action-strip span:nth-child(3) {
+    grid-column: 1 / -1;
+    margin-left: 34px;
+  }
+
+  .about-action-strip span:nth-child(4) {
+    grid-column: 1;
+  }
+
+  .about-action-strip span:nth-child(5) {
+    grid-column: 2;
+  }
+
+
   /* FOOTER */
 
   .site-footer {
@@ -1357,12 +1387,6 @@ body[data-page="about"] .site-footer {
 
 
   /* ABOUT */
-
-  .about-action-strip {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 14px 22px;
-  }
 
   .about-closing-main {
     font-size: clamp(34px, 10vw, 49px);
@@ -1404,7 +1428,15 @@ body[data-page="about"] .site-footer {
     align-items: flex-start;
   }
 
+  .about-action-strip {
+    column-gap: 28px;
+  }
+
   .about-action-strip span {
-    font-size: 20px;
+    font-size: 27px;
+  }
+
+  .about-action-strip span:nth-child(3) {
+    margin-left: 28px;
   }
 }
