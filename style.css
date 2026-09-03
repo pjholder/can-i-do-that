@@ -680,17 +680,36 @@ select:focus {
   padding: 26px 30px 10px;
   border-top: 1px solid #d7d5ce;
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
+  grid-template-columns: auto 1fr;
+  align-items: start;
   gap: 26px;
+}
+
+.footer-main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .footer-nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 22px;
 }
 
+.footer-nav a[aria-current="page"] {
+  text-decoration: underline;
+}
+
+.footer-copyright {
+  margin: 0;
+  color: #666;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 .data-note {
+  justify-self: end;
   text-align: right;
   color: #666;
   font-size: 12px;
@@ -714,6 +733,10 @@ select:focus {
   font-size: 12px;
 }
 
+.data-actions button:hover {
+  text-decoration: underline;
+}
+
 .restore-input {
   display: none;
 }
@@ -722,13 +745,8 @@ select:focus {
 /* DIALOGS — SHARED POPUP SYSTEM */
 
 .site-dialog {
-  position: fixed;
-  inset: 0;
   width: min(92%, 600px);
-  max-height: calc(100dvh - 32px);
-  margin: auto;
   padding: 26px;
-  overflow-y: auto;
   border: 1px solid #d1cfc8;
   border-radius: 10px;
   background: #f8f7f3;
@@ -1118,11 +1136,8 @@ body[data-page="about"] .site-footer {
 /* ABOUT CHALLENGE */
 
 .about-challenge-dialog {
-  position: fixed;
-  inset: 0;
+  position: relative;
   width: min(92%, 600px);
-  max-height: calc(100dvh - 32px);
-  margin: auto;
   padding: 26px;
 }
 
@@ -1155,6 +1170,95 @@ body[data-page="about"] .site-footer {
   color: #555;
   font-size: 15px;
   line-height: 1.5;
+}
+
+
+/* LEGAL PAGES */
+
+.legal-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 52px 30px 30px;
+}
+
+.legal-page-header {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #d7d5ce;
+}
+
+.legal-page-header h1 {
+  margin: 4px 0 10px;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+
+.legal-updated {
+  margin: 0;
+  color: #666;
+  font-size: 13px;
+}
+
+.legal-content {
+  max-width: 760px;
+  padding-top: 36px;
+}
+
+.legal-intro {
+  margin: 0 0 46px;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.legal-content section {
+  margin-bottom: 42px;
+}
+
+.legal-content section:last-child {
+  margin-bottom: 0;
+}
+
+.legal-content h2 {
+  margin: 0 0 14px;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -.4px;
+}
+
+.legal-content p {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.legal-content p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-content ul {
+  margin: 4px 0 20px;
+  padding-left: 22px;
+}
+
+.legal-content li {
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.legal-content strong {
+  font-weight: 700;
+}
+
+.legal-content a {
+  color: #2864dc;
+}
+
+body[data-page="privacy"] .site-footer,
+body[data-page="terms"] .site-footer,
+body[data-page="safety"] .site-footer {
+  margin-top: 40px;
 }
 
 
@@ -1309,10 +1413,20 @@ body[data-page="about"] .site-footer {
   .site-footer {
     grid-template-columns: 1fr;
     align-items: start;
+    gap: 24px;
     padding: 22px 18px 0;
   }
 
+  .footer-main {
+    gap: 10px;
+  }
+
+  .footer-nav {
+    gap: 18px;
+  }
+
   .data-note {
+    justify-self: start;
     text-align: left;
   }
 
@@ -1367,6 +1481,43 @@ body[data-page="about"] .site-footer {
   .about-challenge-arrow:hover {
     transform: none;
   }
+
+
+  /* LEGAL PAGES */
+
+  .legal-page {
+    padding: 38px 18px 20px;
+  }
+
+  .legal-page-header {
+    padding-bottom: 24px;
+  }
+
+  .legal-page-header h1 {
+    font-size: clamp(40px, 12vw, 54px);
+  }
+
+  .legal-content {
+    padding-top: 28px;
+  }
+
+  .legal-intro {
+    margin-bottom: 38px;
+    font-size: 19px;
+  }
+
+  .legal-content section {
+    margin-bottom: 36px;
+  }
+
+  .legal-content h2 {
+    font-size: 22px;
+  }
+
+  .legal-content p,
+  .legal-content li {
+    font-size: 15px;
+  }
 }
 
 
@@ -1386,5 +1537,9 @@ body[data-page="about"] .site-footer {
 
   .about-action-strip span {
     font-size: 20px;
+  }
+
+  .footer-nav {
+    gap: 14px;
   }
 }

@@ -88,18 +88,8 @@
         class="summary-card"
         href="./skills.html?status=can"
       >
-
-        <span
-          id="canCount"
-          class="summary-number"
-        >
-          0
-        </span>
-
-        <span class="summary-label">
-          I can do this
-        </span>
-
+        <span id="canCount" class="summary-number">0</span>
+        <span class="summary-label">I can do this</span>
       </a>
 
 
@@ -107,18 +97,8 @@
         class="summary-card"
         href="./skills.html?status=learning"
       >
-
-        <span
-          id="learningCount"
-          class="summary-number"
-        >
-          0
-        </span>
-
-        <span class="summary-label">
-          Learning
-        </span>
-
+        <span id="learningCount" class="summary-number">0</span>
+        <span class="summary-label">Learning</span>
       </a>
 
 
@@ -126,18 +106,8 @@
         class="summary-card"
         href="./skills.html?status=want"
       >
-
-        <span
-          id="wantCount"
-          class="summary-number"
-        >
-          0
-        </span>
-
-        <span class="summary-label">
-          Want to try
-        </span>
-
+        <span id="wantCount" class="summary-number">0</span>
+        <span class="summary-label">Want to try</span>
       </a>
 
     </section>
@@ -148,7 +118,6 @@
 
     <section class="skills-section">
 
-
       <div class="skills-page-actions">
 
         <button
@@ -158,7 +127,6 @@
         >
           What should I try?
         </button>
-
 
         <button
           id="openAddSkillButton"
@@ -225,7 +193,6 @@
           0 skills
         </p>
 
-
         <button
           id="restoreHiddenButton"
           class="text-button hidden"
@@ -237,18 +204,15 @@
       </div>
 
 
-
       <div
         id="activePersonalView"
         class="personal-view hidden"
       ></div>
 
-
       <div
         id="skillsContainer"
         class="skills-container"
       ></div>
-
 
       <button
         id="showMoreButton"
@@ -266,24 +230,33 @@
 
     <footer class="site-footer">
 
-      <nav
-        class="footer-nav"
-        aria-label="Footer navigation"
-      >
+      <div class="footer-main">
 
-        <a href="./index.html">
-          Home
-        </a>
+        <nav
+          class="footer-nav"
+          aria-label="Footer navigation"
+        >
 
-        <a href="./skills.html">
-          Skills
-        </a>
+          <a href="./privacy.html">
+            Privacy
+          </a>
 
-        <a href="./about.html">
-          About
-        </a>
+          <a href="./terms.html">
+            Terms
+          </a>
 
-      </nav>
+          <a href="./safety.html">
+            Safety
+          </a>
+
+        </nav>
+
+
+        <p class="footer-copyright">
+          © 2026 Can I Do That?
+        </p>
+
+      </div>
 
 
       <div class="data-note">
@@ -295,17 +268,11 @@
 
         <div class="data-actions">
 
-          <button
-            type="button"
-            data-backup
-          >
+          <button type="button" data-backup>
             Back up
           </button>
 
-          <button
-            type="button"
-            data-restore
-          >
+          <button type="button" data-restore>
             Restore
           </button>
 
@@ -337,13 +304,8 @@
     <div class="dialog-heading">
 
       <div>
-
-        <h2>
-          Something to try
-        </h2>
-
+        <h2>Something to try</h2>
       </div>
-
 
       <button
         class="dialog-close"
@@ -367,7 +329,6 @@
         class="suggestion-capabilities"
       ></p>
 
-
       <h3 id="suggestionName"></h3>
 
 
@@ -380,7 +341,6 @@
         >
           Want to try
         </button>
-
 
         <button
           id="anotherSuggestionButton"
@@ -426,7 +386,6 @@
 
       </div>
 
-
       <button
         class="dialog-close"
         type="button"
@@ -442,61 +401,32 @@
     <form id="storyForm">
 
       <label for="storyWhen">
-
         When
-
-        <span class="optional">
-          (optional)
-        </span>
-
+        <span class="optional">(optional)</span>
       </label>
 
-      <input
-        id="storyWhen"
-        type="text"
-      >
+      <input id="storyWhen" type="text">
 
 
       <label for="storyWho">
-
         Who were you with?
-
-        <span class="optional">
-          (optional)
-        </span>
-
+        <span class="optional">(optional)</span>
       </label>
 
-      <input
-        id="storyWho"
-        type="text"
-      >
+      <input id="storyWho" type="text">
 
 
       <label for="storyWhere">
-
         Where?
-
-        <span class="optional">
-          (optional)
-        </span>
-
+        <span class="optional">(optional)</span>
       </label>
 
-      <input
-        id="storyWhere"
-        type="text"
-      >
+      <input id="storyWhere" type="text">
 
 
       <label for="storyMemory">
-
         What do you remember?
-
-        <span class="optional">
-          (optional)
-        </span>
-
+        <span class="optional">(optional)</span>
       </label>
 
       <textarea id="storyMemory"></textarea>
@@ -510,7 +440,6 @@
         >
           Save story
         </button>
-
 
         <button
           id="deleteStoryButton"
@@ -538,13 +467,10 @@
     <div class="dialog-heading">
 
       <div>
-
         <h2 id="customSkillDialogTitle">
           Add your own skill
         </h2>
-
       </div>
-
 
       <button
         class="dialog-close"
@@ -590,13 +516,8 @@
     <div class="custom-capability-block">
 
       <p class="custom-field-label">
-
         Human capabilities
-
-        <span class="optional">
-          (optional)
-        </span>
-
+        <span class="optional">(optional)</span>
       </p>
 
       <p class="custom-field-help">
@@ -639,13 +560,8 @@
     <div class="dialog-heading">
 
       <div>
-
-        <h2>
-          Hidden skills
-        </h2>
-
+        <h2>Hidden skills</h2>
       </div>
-
 
       <button
         class="dialog-close"
@@ -662,7 +578,6 @@
     <p class="dialog-intro">
       Bring back only the ones you want.
     </p>
-
 
     <div id="hiddenSkillsContainer"></div>
 
