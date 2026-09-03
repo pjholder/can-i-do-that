@@ -388,6 +388,10 @@ function showAboutChallenge() {
 }
 
 
+/* =========================
+   ABOUT DIALOG SETUP
+========================= */
+
 function setupAboutChallenge() {
   if (
     page !== "about"
