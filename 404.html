@@ -64,13 +64,48 @@
 
       <div class="not-found-inner">
 
-        <p class="not-found-number">
-          404
-        </p>
+
+        <!-- NUMBER -->
+
+        <div class="not-found-number-wrap">
+
+          <p class="not-found-number">
+            404
+          </p>
 
 
-        <h1>
+          <!-- FIRST SECRET MARK -->
+
+          <button
+            class="secret-first-mark"
+            id="secretFirstMark"
+            type="button"
+            aria-label="A small hidden mark"
+            hidden
+          >
+            ·
+          </button>
+
+        </div>
+
+
+
+        <!-- MESSAGE -->
+
+        <h1 class="not-found-heading">
+
           Can I find that page?
+
+          <button
+            class="secret-number-clue secret-clue-two"
+            type="button"
+            data-secret-digit="2"
+            aria-label="A small hidden mark"
+            hidden
+          >
+            ·
+          </button>
+
         </h1>
 
 
@@ -84,6 +119,9 @@
         </p>
 
 
+
+        <!-- ACTIONS -->
+
         <div class="not-found-actions">
 
           <a
@@ -92,6 +130,18 @@
           >
             Go home →
           </a>
+
+
+          <button
+            class="secret-number-clue secret-clue-zero"
+            type="button"
+            data-secret-digit="0"
+            aria-label="A small hidden mark"
+            hidden
+          >
+            +
+          </button>
+
 
           <a
             class="not-found-secondary"
@@ -103,9 +153,127 @@
         </div>
 
 
-        <p class="not-found-note">
-          You checked anyway.
+
+        <!-- SECRET ENTRANCE -->
+
+        <p
+          class="not-found-note secret-line"
+          id="secretLine"
+        >
+
+          That's
+
+          <button
+            class="secret-it-trigger"
+            id="secretTrigger"
+            type="button"
+            aria-label="Hidden clue"
+          >
+
+            <span
+              class="secret-i"
+              aria-hidden="true"
+            >
+              <span class="secret-i-letter">
+                ı
+              </span>
+
+              <span class="secret-i-dot"></span>
+            </span><span aria-hidden="true">t</span>
+
+            <span class="secret-screen-reader-text">
+              it
+            </span>
+
+          </button>.
+
         </p>
+
+
+
+        <!-- CODE -->
+
+        <div
+          class="secret-code-area"
+          id="secretCodeArea"
+          hidden
+        >
+
+          <button
+            class="secret-found-button"
+            id="secretFoundButton"
+            type="button"
+          >
+            Found something?
+          </button>
+
+
+          <form
+            class="secret-code-form"
+            id="secretCodeForm"
+            hidden
+          >
+
+            <label for="secretCodeInput">
+              What did you find?
+            </label>
+
+
+            <div class="secret-code-row">
+
+              <input
+                id="secretCodeInput"
+                type="text"
+                inputmode="numeric"
+                autocomplete="off"
+                maxlength="4"
+                aria-describedby="secretCodeMessage"
+              >
+
+
+              <button
+                type="submit"
+                aria-label="Try code"
+              >
+                →
+              </button>
+
+            </div>
+
+
+            <p
+              class="secret-code-message"
+              id="secretCodeMessage"
+              aria-live="polite"
+            ></p>
+
+          </form>
+
+        </div>
+
+
+
+        <!-- FINAL -->
+
+        <div
+          class="secret-final"
+          id="secretFinal"
+          hidden
+        >
+
+          <p>
+            You really do click everything.
+          </p>
+
+          <p>
+            Good.
+          </p>
+
+          <strong>
+            LOOK
+          </strong>
+
+        </div>
 
       </div>
 
@@ -140,7 +308,19 @@
 
 
         <p class="footer-copyright">
+
           © 2026 Can I Do That?
+
+          <button
+            class="secret-number-clue secret-clue-four"
+            type="button"
+            data-secret-digit="4"
+            aria-label="A small hidden mark"
+            hidden
+          >
+            ×
+          </button>
+
         </p>
 
       </div>
@@ -195,6 +375,7 @@
   <script src="./skills-page.js"></script>
   <script src="./suggestions.js"></script>
   <script src="./script.js"></script>
+  <script src="./404-secret.js"></script>
 
 
 </body>
