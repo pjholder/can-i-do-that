@@ -13,9 +13,19 @@ const secretFirstMark =
     "secretFirstMark"
   );
 
-const secretNumberClues =
-  document.querySelectorAll(
-    "[data-secret-digit]"
+const secretClueTwo =
+  document.getElementById(
+    "secretClueTwo"
+  );
+
+const secretClueZero =
+  document.getElementById(
+    "secretClueZero"
+  );
+
+const secretClueFour =
+  document.getElementById(
+    "secretClueFour"
   );
 
 const secretCodeArea =
@@ -56,22 +66,32 @@ if (
   secretFirstMark
 ) {
 
-  let secretStarted = false;
+  let secretStarted =
+    false;
 
-  let firstNumberFound = false;
+  let sevenFound =
+    false;
 
-  let codeSolved = false;
+  let twoFound =
+    false;
 
+  let zeroFound =
+    false;
 
-  const foundDigits =
-    new Set();
+  let fourFound =
+    false;
+
+  let codeSolved =
+    false;
 
 
 
   /* ========================================
-     START
+     SECRET ENTRANCE
 
-     CLICK THE BLUE DOT / "IT"
+     THAT'S IT.
+     ↓
+     STILL LOOKING.
   ======================================== */
 
   secretTrigger.addEventListener(
@@ -83,12 +103,19 @@ if (
       }
 
 
-      secretStarted = true;
+      secretStarted =
+        true;
 
 
       secretLine.textContent =
         "Still looking.";
 
+
+
+      /*
+        Give the page a tiny moment before
+        the first strange mark appears.
+      */
 
       window.setTimeout(
         function () {
@@ -106,22 +133,24 @@ if (
 
 
   /* ========================================
-     FIRST MARK
+     FIRST DISCOVERY
 
-     THE FIRST MARK BECOMES 7.
-     THEN THE OTHER MARKS APPEAR.
+     ·
+     ↓
+     7
   ======================================== */
 
   secretFirstMark.addEventListener(
     "click",
     function () {
 
-      if (firstNumberFound) {
+      if (sevenFound) {
         return;
       }
 
 
-      firstNumberFound = true;
+      sevenFound =
+        true;
 
 
       secretFirstMark.textContent =
@@ -139,13 +168,25 @@ if (
       );
 
 
-      secretNumberClues.forEach(
-        function (clue) {
 
-          clue.hidden =
-            false;
+      /*
+        Only the NEXT clue appears.
 
-        }
+        Nothing else changes yet.
+      */
+
+      window.setTimeout(
+        function () {
+
+          if (secretClueTwo) {
+
+            secretClueTwo.hidden =
+              false;
+
+          }
+
+        },
+        500
       );
 
     }
@@ -154,86 +195,208 @@ if (
 
 
   /* ========================================
-     OTHER NUMBER MARKS
+     SECOND DISCOVERY
+
+     ·
+     ↓
+     2
   ======================================== */
 
-  secretNumberClues.forEach(
-    function (clue) {
+  if (secretClueTwo) {
 
-      clue.addEventListener(
-        "click",
-        function () {
+    secretClueTwo.addEventListener(
+      "click",
+      function () {
 
-          if (!firstNumberFound) {
-            return;
-          }
-
-
-          const digit =
-            clue.dataset.secretDigit;
-
-
-          if (
-            !digit ||
-            foundDigits.has(digit)
-          ) {
-            return;
-          }
-
-
-          foundDigits.add(
-            digit
-          );
-
-
-          clue.textContent =
-            digit;
-
-
-          clue.classList.add(
-            "secret-number-found"
-          );
-
-
-          clue.setAttribute(
-            "aria-label",
-            digit
-          );
-
-
-          /*
-            The three hidden numbers are:
-
-            2
-            0
-            4
-          */
-
-          if (
-            foundDigits.size === 3
-          ) {
-
-            window.setTimeout(
-              function () {
-
-                if (secretCodeArea) {
-
-                  secretCodeArea.hidden =
-                    false;
-
-                }
-
-              },
-              450
-            );
-
-          }
-
+        if (
+          !sevenFound ||
+          twoFound
+        ) {
+          return;
         }
-      );
 
-    }
-  );
+
+        twoFound =
+          true;
+
+
+        secretClueTwo.textContent =
+          "2";
+
+
+        secretClueTwo.classList.add(
+          "secret-number-found"
+        );
+
+
+        secretClueTwo.setAttribute(
+          "aria-label",
+          "2"
+        );
+
+
+
+        /*
+          Now the next mark quietly
+          appears elsewhere.
+        */
+
+        window.setTimeout(
+          function () {
+
+            if (secretClueZero) {
+
+              secretClueZero.hidden =
+                false;
+
+            }
+
+          },
+          500
+        );
+
+      }
+    );
+
+  }
+
+
+
+  /* ========================================
+     THIRD DISCOVERY
+
+     +
+     ↓
+     0
+  ======================================== */
+
+  if (secretClueZero) {
+
+    secretClueZero.addEventListener(
+      "click",
+      function () {
+
+        if (
+          !twoFound ||
+          zeroFound
+        ) {
+          return;
+        }
+
+
+        zeroFound =
+          true;
+
+
+        secretClueZero.textContent =
+          "0";
+
+
+        secretClueZero.classList.add(
+          "secret-number-found"
+        );
+
+
+        secretClueZero.setAttribute(
+          "aria-label",
+          "0"
+        );
+
+
+
+        /*
+          Last hidden mark.
+        */
+
+        window.setTimeout(
+          function () {
+
+            if (secretClueFour) {
+
+              secretClueFour.hidden =
+                false;
+
+            }
+
+          },
+          500
+        );
+
+      }
+    );
+
+  }
+
+
+
+  /* ========================================
+     FOURTH DISCOVERY
+
+     ×
+     ↓
+     4
+  ======================================== */
+
+  if (secretClueFour) {
+
+    secretClueFour.addEventListener(
+      "click",
+      function () {
+
+        if (
+          !zeroFound ||
+          fourFound
+        ) {
+          return;
+        }
+
+
+        fourFound =
+          true;
+
+
+        secretClueFour.textContent =
+          "4";
+
+
+        secretClueFour.classList.add(
+          "secret-number-found"
+        );
+
+
+        secretClueFour.setAttribute(
+          "aria-label",
+          "4"
+        );
+
+
+
+        /*
+          All four numbers have now
+          been discovered.
+
+          Only now does the page ask
+          "Found something?"
+        */
+
+        window.setTimeout(
+          function () {
+
+            if (secretCodeArea) {
+
+              secretCodeArea.hidden =
+                false;
+
+            }
+
+          },
+          600
+        );
+
+      }
+    );
+
+  }
 
 
 
@@ -289,15 +452,18 @@ if (
         }
 
 
+
         const value =
           secretCodeInput.value
             .replace(/\s/g, "")
             .trim();
 
 
+
         if (value === "7204") {
 
-          codeSolved = true;
+          codeSolved =
+            true;
 
 
           if (secretCodeMessage) {
@@ -312,6 +478,7 @@ if (
             true;
 
 
+
           if (secretFinal) {
 
             secretFinal.hidden =
@@ -323,6 +490,7 @@ if (
           return;
 
         }
+
 
 
         if (secretCodeMessage) {
