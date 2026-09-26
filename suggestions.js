@@ -149,6 +149,44 @@ function showRandomSuggestion() {
 
 
 /* =========================
+   OPEN SKILL RESOURCE
+========================= */
+
+function openSkillResource(skill) {
+  if (
+    !skill ||
+    !Array.isArray(
+      skill.resources
+    ) ||
+    !skill.resources.length
+  ) {
+    return;
+  }
+
+
+  const resource =
+    skill.resources.find(
+      item =>
+        item &&
+        typeof item.url === "string" &&
+        item.url.trim()
+    );
+
+
+  if (!resource) {
+    return;
+  }
+
+
+  window.open(
+    resource.url,
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
+
+
+/* =========================
    RANDOM DIALOG
 ========================= */
 
@@ -229,6 +267,11 @@ function setupTryDialog() {
       ) {
         renderSkillsPage();
       }
+
+
+      openSkillResource(
+        currentSuggestion
+      );
     }
   );
 }
@@ -470,6 +513,11 @@ function setupAboutChallenge() {
 
 
       updateCounts();
+
+
+      openSkillResource(
+        currentAboutChallenge
+      );
     }
   );
 }
