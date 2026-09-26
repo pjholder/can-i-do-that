@@ -345,6 +345,433 @@ function backupData() {
 
 
 /* =========================
+   BACKUP VALIDATION
+========================= */
+
+function isPlainObject(
+  value
+) {
+  return (
+    value !== null &&
+    typeof value ===
+      "object" &&
+    !Array.isArray(
+      value
+    )
+  );
+}
+
+
+function isValidSkillId(
+  id
+) {
+  return (
+    typeof id ===
+      "string" &&
+    /^[a-z0-9][a-z0-9_-]{0,99}$/i
+      .test(id)
+  );
+}
+
+
+function validateBackupData(
+  data
+) {
+  if (
+    !isPlainObject(
+      data
+    )
+  ) {
+    return false;
+  }
+
+
+  if (
+    data.version !== 1
+  ) {
+    return false;
+  }
+
+
+  if (
+    !Array.isArray(
+      data.customSkills
+    ) ||
+    !Array.isArray(
+      data.hiddenSkills
+    ) ||
+    !isPlainObject(
+      data.statuses
+    ) ||
+    !isPlainObject(
+      data.stories
+    )
+  ) {
+    return false;
+  }
+
+
+  const officialIds =
+    new Set(
+      starterSkills.map(
+        skill =>
+          skill.id
+      )
+    );
+
+
+  const customIds =
+    new Set();
+
+
+  for (
+    const skill of
+      data.customSkills
+  ) {
+    if (
+      !isPlainObject(
+        skill
+      )
+    ) {
+      return false;
+    }
+
+
+    if (
+      !isValidSkillId(
+        skill.id
+      )
+    ) {
+      return false;
+    }
+
+
+    if (
+      officialIds.has(
+        skill.id
+      ) ||
+      customIds.has(
+        skill.id
+      )
+    ) {
+      return false;
+    }
+
+
+    if (
+      typeof skill.name !==
+        "string" ||
+      !skill.name.trim() ||
+      skill.name.length >
+        120
+    ) {
+      return false;
+    }
+
+
+    if (
+      !Array.isArray(
+        skill.capabilities
+      ) ||
+      skill.capabilities
+        .length > 3
+    ) {
+      return false;
+    }
+
+
+    const seenCapabilities =
+      new Set();
+
+
+    for (
+      const capability of
+        skill.capabilities
+    ) {
+      if (
+        typeof capability !==
+          "string" ||
+        capability.length >
+          50 ||
+        !capabilities.includes(
+          capability
+        ) ||
+        seenCapabilities.has(
+          capability
+        )
+      ) {
+        return false;
+      }
+
+
+      seenCapabilities.add(
+        capability
+      );
+    }
+
+
+    customIds.add(
+      skill.id
+    );
+  }
+
+
+  for (
+    const id of
+      data.hiddenSkills
+  ) {
+    if (
+      typeof id !==
+        "string" ||
+      !officialIds.has(
+        id
+      )
+    ) {
+      return false;
+    }
+  }
+
+
+  const knownIds =
+    new Set([
+      ...officialIds,
+      ...customIds
+    ]);
+
+
+  const validStatuses =
+    new Set([
+      "can",
+      "learning",
+      "want"
+    ]);
+
+
+  for (
+    const [
+      id,
+      status
+    ] of
+      Object.entries(
+        data.statuses
+      )
+  ) {
+    if (
+      !knownIds.has(
+        id
+      ) ||
+      !validStatuses.has(
+        status
+      )
+    ) {
+      return false;
+    }
+  }
+
+
+  for (
+    const [
+      id,
+      story
+    ] of
+      Object.entries(
+        data.stories
+      )
+  ) {
+    if (
+      !knownIds.has(
+        id
+      ) ||
+      !isPlainObject(
+        story
+      )
+    ) {
+      return false;
+    }
+
+
+    const textFields = [
+      [
+        "when",
+        200
+      ],
+      [
+        "who",
+        200
+      ],
+      [
+        "where",
+        200
+      ],
+      [
+        "memory",
+        5000
+      ]
+    ];
+
+
+    for (
+      const [
+        field,
+        maxLength
+      ] of
+        textFields
+    ) {
+      if (
+        story[field] !==
+          undefined &&
+        (
+          typeof story[field] !==
+            "string" ||
+          story[field].length >
+            maxLength
+        )
+      ) {
+        return false;
+      }
+    }
+  }
+
+
+  return true;
+}
+
+
+/* =========================
+   RESTORE HELPERS
+========================= */
+
+function getSavedDataKeys() {
+  return Object.keys(
+    localStorage
+  ).filter(
+    key =>
+      key.startsWith(
+        "status-"
+      ) ||
+      key.startsWith(
+        "story-"
+      ) ||
+      key ===
+        "customSkills" ||
+      key ===
+        "hiddenSkills"
+  );
+}
+
+
+function snapshotSavedData() {
+  const snapshot = {};
+
+
+  getSavedDataKeys()
+    .forEach(
+      key => {
+        snapshot[key] =
+          localStorage.getItem(
+            key
+          );
+      }
+    );
+
+
+  return snapshot;
+}
+
+
+function clearSavedData() {
+  getSavedDataKeys()
+    .forEach(
+      key => {
+        localStorage.removeItem(
+          key
+        );
+      }
+    );
+}
+
+
+function restoreSnapshot(
+  snapshot
+) {
+  clearSavedData();
+
+
+  Object.entries(
+    snapshot
+  ).forEach(
+    (
+      [
+        key,
+        value
+      ]
+    ) => {
+      if (
+        value !== null
+      ) {
+        localStorage.setItem(
+          key,
+          value
+        );
+      }
+    }
+  );
+}
+
+
+function writeBackupData(
+  data
+) {
+  saveCustomSkills(
+    data.customSkills
+  );
+
+
+  saveHiddenSkills(
+    data.hiddenSkills
+  );
+
+
+  Object.entries(
+    data.statuses
+  ).forEach(
+    (
+      [
+        id,
+        status
+      ]
+    ) => {
+      localStorage.setItem(
+        "status-" +
+          id,
+        status
+      );
+    }
+  );
+
+
+  Object.entries(
+    data.stories
+  ).forEach(
+    (
+      [
+        id,
+        story
+      ]
+    ) => {
+      localStorage.setItem(
+        "story-" +
+          id,
+        JSON.stringify(
+          story
+        )
+      );
+    }
+  );
+}
+
+
+/* =========================
    RESTORE
 ========================= */
 
@@ -357,120 +784,80 @@ function restoreData(
 
   reader.onload =
     () => {
+      let data;
+
+
       try {
-        const data =
+        data =
           JSON.parse(
             reader.result
           );
-
-
-        if (
-          !data ||
-          data.version !== 1
-        ) {
-          throw new Error(
-            "Unsupported backup"
-          );
-        }
-
-
-        if (
-          !confirm(
-            "Restore your backup?\n\nThis will replace the skills, statuses and stories currently saved on this device."
-          )
-        ) {
-          return;
-        }
-
-
-        Object.keys(
-          localStorage
-        ).forEach(
-          key => {
-            if (
-              key.startsWith(
-                "status-"
-              ) ||
-              key.startsWith(
-                "story-"
-              ) ||
-              key ===
-                "customSkills" ||
-              key ===
-                "hiddenSkills"
-            ) {
-              localStorage.removeItem(
-                key
-              );
-            }
-          }
+      } catch {
+        alert(
+          "That backup file could not be restored. No saved data was changed."
         );
 
+        return;
+      }
 
-        saveCustomSkills(
-          Array.isArray(
-            data.customSkills
-          )
-            ? data.customSkills
-            : []
+
+      if (
+        !validateBackupData(
+          data
+        )
+      ) {
+        alert(
+          "That backup file could not be restored. No saved data was changed."
         );
 
+        return;
+      }
 
-        saveHiddenSkills(
-          Array.isArray(
-            data.hiddenSkills
-          )
-            ? data.hiddenSkills
-            : []
+
+      if (
+        !confirm(
+          "Restore your backup?\n\nThis will replace the skills, statuses and stories currently saved on this device."
+        )
+      ) {
+        return;
+      }
+
+
+      const snapshot =
+        snapshotSavedData();
+
+
+      try {
+        clearSavedData();
+
+        writeBackupData(
+          data
         );
-
-
-        Object.entries(
-          data.statuses ||
-          {}
-        ).forEach(
-          (
-            [
-              id,
-              status
-            ]
-          ) => {
-            localStorage.setItem(
-              "status-" +
-                id,
-              status
-            );
-          }
-        );
-
-
-        Object.entries(
-          data.stories ||
-          {}
-        ).forEach(
-          (
-            [
-              id,
-              story
-            ]
-          ) => {
-            localStorage.setItem(
-              "story-" +
-                id,
-              JSON.stringify(
-                story
-              )
-            );
-          }
-        );
-
 
         location.reload();
       } catch {
-        alert(
-          "That backup file could not be restored."
-        );
+        try {
+          restoreSnapshot(
+            snapshot
+          );
+
+          alert(
+            "The restore could not be completed. Your previous saved data has been put back."
+          );
+        } catch {
+          alert(
+            "The restore could not be completed, and the previous saved data could not be fully restored automatically. Keep your backup file safe."
+          );
+        }
       }
+    };
+
+
+  reader.onerror =
+    () => {
+      alert(
+        "That backup file could not be read. No saved data was changed."
+      );
     };
 
 

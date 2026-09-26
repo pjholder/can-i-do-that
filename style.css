@@ -76,11 +76,13 @@ button {
   text-decoration: none;
 }
 
-.desktop-nav a {
+.desktop-nav a,
+.footer-nav a {
   position: relative;
 }
 
-.desktop-nav a::after {
+.desktop-nav a::after,
+.footer-nav a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -94,12 +96,10 @@ button {
 }
 
 .desktop-nav a[aria-current="page"]::after,
-.desktop-nav a:hover::after {
+.desktop-nav a:hover::after,
+.footer-nav a[aria-current="page"]::after,
+.footer-nav a:hover::after {
   transform: scaleX(1);
-}
-
-.footer-nav a:hover {
-  text-decoration: underline;
 }
 
 
@@ -603,14 +603,23 @@ select:focus {
 
 .skill-details.compact-details {
   margin-top: 12px;
-  padding-top: 0;
-  border-top: 0;
+  padding-top: 12px;
+  border-top: 1px solid #dfded8;
 }
 
-.skill-details.compact-details
-.skill-secondary-actions {
-  padding-top: 0;
-  border-top: 0;
+.story-section {
+  padding-bottom: 14px;
+}
+
+.learn-how-section .learn-resource {
+  color: #555;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.learn-how-section .learn-resource:hover {
+  color: #2864dc;
+  text-decoration: underline;
 }
 
 .story-heading {
@@ -620,6 +629,8 @@ select:focus {
   font-weight: 800;
   letter-spacing: 1px;
 }
+
+
 
 .story-display {
   margin: 0 0 12px;
@@ -699,10 +710,6 @@ select:focus {
   display: flex;
   flex-wrap: wrap;
   gap: 22px;
-}
-
-.footer-nav a[aria-current="page"] {
-  text-decoration: underline;
 }
 
 .footer-copyright {
@@ -2232,7 +2239,7 @@ body[data-page="404"] .site-footer {
   }
 
   .legal-page-header h1 {
-    font-size: clamp(35px, 9.5vw, 46px);
+    font-size: clamp(35px, 9.5vw, 48px);
     letter-spacing: -1.5px;
   }
 

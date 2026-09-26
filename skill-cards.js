@@ -148,10 +148,70 @@ function createSkillCard(
       status === "can";
 
 
+    const resources =
+      Array.isArray(
+        skill.resources
+      )
+        ? skill.resources.filter(
+            resource =>
+              resource &&
+              typeof resource.title === "string" &&
+              resource.title.trim() &&
+              typeof resource.url === "string" &&
+              resource.url.trim()
+          )
+        : [];
+
+
+    const learnHowAllowed =
+      !storyAllowed &&
+      resources.length > 0;
+
+
     details.classList.toggle(
       "compact-details",
       !storyAllowed
     );
+
+
+    let learnHowHTML =
+      "";
+
+
+    if (learnHowAllowed) {
+      learnHowHTML = `
+
+        <div class="story-section learn-how-section">
+
+          <p class="story-heading">
+            LEARN HOW
+          </p>
+
+          ${resources
+            .map(
+              resource => `
+
+                <a
+                  class="skill-action learn-resource"
+                  href="${escapeHTML(
+                    resource.url
+                  )}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ${escapeHTML(
+                    resource.title
+                  )} →
+                </a>
+
+              `
+            )
+            .join("")}
+
+        </div>
+
+      `;
+    }
 
 
     let storyHTML =
@@ -272,6 +332,8 @@ function createSkillCard(
 
 
     details.innerHTML = `
+
+      ${learnHowHTML}
 
       ${storyHTML}
 
