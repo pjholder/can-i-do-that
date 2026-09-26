@@ -709,7 +709,12 @@ select:focus {
 .footer-nav {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 22px;
+}
+
+.footer-nav a {
+  display: inline-block;
 }
 
 .footer-copyright {
@@ -2239,7 +2244,7 @@ body[data-page="404"] .site-footer {
   }
 
   .legal-page-header h1 {
-    font-size: clamp(35px, 9.5vw, 48px);
+    font-size: clamp(35px, 9.5vw, 46px);
     letter-spacing: -1.5px;
   }
 
