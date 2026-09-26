@@ -761,12 +761,22 @@ select:focus {
 /* DIALOGS — SHARED POPUP SYSTEM */
 
 .site-dialog {
+  position: fixed;
+  inset: 0;
+
   width: min(92%, 600px);
+  max-height: calc(100vh - 40px);
+
+  margin: auto;
   padding: 26px;
+
   border: 1px solid #d1cfc8;
   border-radius: 10px;
+
   background: #f8f7f3;
   color: #171717;
+
+  overflow-y: auto;
 }
 
 .site-dialog::backdrop {
@@ -1152,7 +1162,6 @@ body[data-page="about"] .site-footer {
 /* ABOUT CHALLENGE */
 
 .about-challenge-dialog {
-  position: relative;
   width: min(92%, 600px);
   padding: 26px;
 }
