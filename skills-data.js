@@ -38,7 +38,15 @@ const starterSkills = [
 
     featured: true,
 
-    custom: false
+    custom: false,
+
+    resources: [
+      {
+        type: "youtube",
+        title: "The World Record Paper Airplane — John Collins",
+        url: "https://www.youtube.com/watch?v=2n4xq0DnbHI"
+      }
+    ]
 
   },
 
@@ -52,7 +60,15 @@ const starterSkills = [
 
     featured: true,
 
-    custom: false
+    custom: false,
+
+    resources: [
+      {
+        type: "youtube",
+        title: "Easy coin magic trick — beginner tutorial",
+        url: "https://www.youtube.com/watch?v=bNWqnnhBQpo"
+      }
+    ]
 
   },
 
@@ -66,7 +82,15 @@ const starterSkills = [
 
     featured: true,
 
-    custom: false
+    custom: false,
+
+    resources: [
+      {
+        type: "youtube",
+        title: "Origami jumping frog — Jo Nakashima",
+        url: "https://www.youtube.com/watch?v=Vlb2udqPx-M"
+      }
+    ]
 
   },
 
@@ -80,7 +104,15 @@ const starterSkills = [
 
     featured: false,
 
-    custom: false
+    custom: false,
+
+    resources: [
+      {
+        type: "youtube",
+        title: "How to do Cat’s Cradle — step by step",
+        url: "https://www.youtube.com/watch?v=VpHTPnrYLzQ"
+      }
+    ]
 
   },
 
@@ -94,7 +126,15 @@ const starterSkills = [
 
     featured: false,
 
-    custom: false
+    custom: false,
+
+    resources: [
+      {
+        type: "youtube",
+        title: "Hand shadow puppets — tutorial",
+        url: "https://www.youtube.com/watch?v=JZ1DH77eWH0"
+      }
+    ]
 
   },
 
@@ -108,7 +148,15 @@ const starterSkills = [
 
     featured: false,
 
-    custom: false
+    custom: false,
+
+    resources: [
+      {
+        type: "youtube",
+        title: "ThumbAround pen spinning — beginner tutorial",
+        url: "https://www.youtube.com/watch?v=BsnUHK2XIu8"
+      }
+    ]
 
   },
 
@@ -122,7 +170,15 @@ const starterSkills = [
 
     featured: true,
 
-    custom: false
+    custom: false,
+
+    resources: [
+      {
+        type: "youtube",
+        title: "Solve a Rubik’s Cube in 10 minutes — J Perm",
+        url: "https://www.youtube.com/watch?v=7Ron6MN45LY"
+      }
+    ]
 
   },
 
@@ -136,7 +192,15 @@ const starterSkills = [
 
     featured: false,
 
-    custom: false
+    custom: false,
+
+    resources: [
+      {
+        type: "youtube",
+        title: "Hand clapping game: Slide",
+        url: "https://www.youtube.com/watch?v=QXJsX7T8fYM"
+      }
+    ]
 
   },
 
@@ -150,7 +214,15 @@ const starterSkills = [
 
     featured: true,
 
-    custom: false
+    custom: false,
+
+    resources: [
+      {
+        type: "youtube",
+        title: "Hand sewing — complete beginner’s guide",
+        url: "https://www.youtube.com/watch?v=G9H1MlPBnQw"
+      }
+    ]
 
   },
 
@@ -164,7 +236,15 @@ const starterSkills = [
 
     featured: true,
 
-    custom: false
+    custom: false,
+
+    resources: [
+      {
+        type: "youtube",
+        title: "The 10 best knots in life — The Bear Essentials",
+        url: "https://www.youtube.com/watch?v=5lLPAHK_k6I"
+      }
+    ]
 
   },
 
@@ -716,6 +796,7 @@ const starterSkills = [
 
 ];
 
+
 const capabilities = [
 
   "Strength",
@@ -755,6 +836,7 @@ const capabilities = [
   "Language"
 
 ];
+
 
 const customStatusOptions = [
 
